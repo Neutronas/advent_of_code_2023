@@ -1,0 +1,54 @@
+import re
+
+def map_digits(input_string, digit_mapping):
+    result = ""
+    while input_string:
+        found_mapping = False
+        for key, value in digit_mapping.items():
+            if input_string.startswith(key):
+                result += value
+                input_string = input_string[1:]
+                found_mapping = True
+                break
+            elif input_string.startswith(value):
+                result += value
+                input_string = input_string[1:]
+                found_mapping = True
+                break
+
+        if not found_mapping:
+            # No matching mapping found, remove the first character
+            result += input_string[0]
+            input_string = input_string[1:]
+
+    return result
+
+# Example usage
+digit_mapping = {
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8",
+    "nine": "9"
+}
+
+
+
+
+with open('input.txt') as f:
+  lines = f.readlines()
+sum = 0
+
+for text in lines:
+    converted_text = map_digits(text, digit_mapping)
+    first_digit = re.search(r"\d", converted_text)
+    last_digit= re.search(r'(\d)[^\d]*$', converted_text)
+    result = int(converted_text[first_digit.start()] + converted_text[last_digit.start()])
+    print(result);
+    sum += result
+
+print(sum)
