@@ -36,8 +36,6 @@ for row_index, row in enumerate(two_d_array):
 if current_number:
     numbers.append((int(current_number), current_row, current_index, current_index + (len(current_number))))
 
-print(numbers)
-
 rows = len(two_d_array)
 cols = len(two_d_array[0])
 
