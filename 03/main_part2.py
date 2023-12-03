@@ -108,7 +108,6 @@ for row_index, row in enumerate(two_d_array):
         foundNumber = bot(row_index, col_index)
         if(foundNumber != None):
           goodNumbers += foundNumber
-        print(goodNumbers)
         if (len(goodNumbers) > 1):
           multiplicationResult = 1
           for number in goodNumbers:
