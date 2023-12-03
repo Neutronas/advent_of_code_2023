@@ -55,11 +55,6 @@ def right(row, col):
               return number[0]
   return None
 
-def range_overlap(range1, range2):
-  x1, x2 = range1.start, range1.stop
-  y1, y2 = range2.start, range2.stop
-  return x1 <= y2 and y1 <= x2
-
 def top(row, col):
   if (row == 0):
      return None
