@@ -17,11 +17,9 @@ def read_lottery_file(file_path):
 
     return winning_list, lottery_numbers
 
-# Example usage
-file_path = 'input.txt'  # Replace with the actual file path
+file_path = 'input.txt' 
 winning_list, lottery_numbers = read_lottery_file(file_path)
 
-# Print the result
 for card_number, winning_numbers in winning_list.items():
     print(f"Card {card_number} Winning Numbers: {winning_numbers}")
 
@@ -49,7 +47,7 @@ match_counts_number = [1] * len(lottery_numbers)
 match_counts = count_matches(lottery_numbers)
 
 total_sum_of_points =  0
-# Print the result
+
 for card_number, matches in match_counts.items():
     total_sum_of_points += count_points(matches)
     print(f"Card {card_number} has {matches} matches.")
