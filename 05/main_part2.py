@@ -101,8 +101,6 @@ def getNewRanges(seedRanges, maps):
             newRanges[map[0]] = map[2]
             migrated.append([map[1], map[2], map[0], map[2]])
             changedMap[seedRange] = True
-            print(f"Leftoveriai: {leftovers}")
-            print(f"Migrated: {migrated}")
       else:
         if( map[1] <= seedRange < map[1] + map[2]) and (map[1] < seedRange+seedRanges[seedRange] <= map[1] + map[2]):
             diff = map[0] - map[1]
