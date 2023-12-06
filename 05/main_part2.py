@@ -10,7 +10,6 @@ def parse_file(filename):
                 data.append({'title': title, 'list': list_data})
             parts = line.split('-')
             title = parts[-1].strip()
-            # title = line.split('-')[0].strip()
             list_data = []
         elif 'seeds:' in line:
             seeds = list(map(int, line.split(':')[1].strip().split()))
@@ -31,13 +30,6 @@ seedsRanges = {}
 for i in range(0, int(len(seeds)), 2):
     seedsRanges[seeds[i]] = seeds[i+1]
 print(seedsRanges)
-
-# for item in data:
-#     # print('Title:', item['title'])
-#     # print('Original List:', item['list'])
-    # item['map'] = transform_list(item['list'])
-#     for key in item['map']:
-#         print(f"{key}      {item['map'][key]}")
 
 def eliminate_overlap(seed_ranges):
     sorted_ranges = sorted(seed_ranges.items())
@@ -132,16 +124,6 @@ def getNewRanges(seedRanges, maps):
             leftovers[seedRange+rangeDiff] = seedRanges[seedRange]-rangeDiff
             migrated.append([seedRange, rangeDiff, diff+seedRange, rangeDiff])
             changedMap[seedRange] = True
-            if diff+seedRange < 0:
-                print(f"Blogai jau su {diff+seedRange}")
-                print(f"Bandau atlikti veiksmą su map {map}")
-                print(f"Diffas yra {diff}")
-                print(f"rangeDiff yra {rangeDiff}")
-                print(f"leftoveris yra {seedRange+rangeDiff} : {seedRanges[seedRange]-rangeDiff}")
-                print(f"Bandau atlikti veiksmą su map {map}")
-                print(f"Naudoju tokį seed'ą: {seedRange} : {seedRanges[seedRange]}")
-                # print(newRanges)
-                exit()
   leftovers = removeUsedRanges(migrated, leftovers)
   newRanges.update(leftovers)
   for changed in changedMap:

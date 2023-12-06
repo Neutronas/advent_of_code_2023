@@ -10,7 +10,6 @@ def parse_file(filename):
                 data.append({'title': title, 'list': list_data})
             parts = line.split('-')
             title = parts[-1].strip()
-            # title = line.split('-')[0].strip()
             list_data = []
         elif 'seeds:' in line:
             seeds = list(map(int, line.split(':')[1].strip().split()))
@@ -35,13 +34,6 @@ def transform_list(lists):
 
 seeds, data = parse_file('input2.txt')
 print('Seeds:', seeds)
-
-# for item in data:
-#     # print('Title:', item['title'])
-#     # print('Original List:', item['list'])
-    # item['map'] = transform_list(item['list'])
-#     for key in item['map']:
-#         print(f"{key}      {item['map'][key]}")
 
 lowest = None
 for seed in seeds:
