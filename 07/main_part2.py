@@ -20,14 +20,12 @@ class CardObject:
         self.findHandType()
 
     def findHandType(self):
-        print(self.cards)
         for card in self.cards:
             if card in self.hand:
                 self.hand[card] += 1
             else:
                 self.hand[card] = 1
         self.hand = sorted(self.hand.items(), key=lambda x:x[1], reverse=True)
-        print(self.hand)
         if(len(self.hand) == 5):
             if('J' in self.hand[0] or 'J' in self.hand[1] or 'J' in self.hand[2] or 'J' in self.hand[3] or 'J' in self.hand[4]):
                 self.handType = HandTypes.OnePair
@@ -78,17 +76,9 @@ def read_input_file(file_path):
     return objects_array
 
 
-# Example usage:
 input_file_path = "input.txt"
 cards = read_input_file(input_file_path)
-
-
-# Print the result for verification
 sortedByRank = []
-print(cards)
-for obj in cards:
-    print(f"Cards: {obj.cards}, Bid: {obj.bid}, Hand: {obj.hand}, HandType: {obj.handType}")
-
 
 def sortArrayByGivenIndex(array, idx):
     sortedArray = []
@@ -119,13 +109,8 @@ for s in HandTypes:
         if(len(cardsOfOneKind) == 1):
             sortedByRank.append(cardsOfOneKind[0])
         else:
-            # print(cardsOfOneKind.cards)
             sortedByRank += cardsOfOneKind
 
-# print(f"--- SORTED BY RANK ---")
-# for obj in sortedByRank:
-#     print(f"Cards: {obj.cards}, Bid: {obj.bid}, Hand: {obj.hand}, HandType: {obj.handType}")
-# Calculate winnings
 
 sum = 0
 for i, card in enumerate(reversed(sortedByRank)):
