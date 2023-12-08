@@ -1,3 +1,5 @@
+import math
+
 # Initialize variables
 instructions = []
 mapDictionary = {}
@@ -31,24 +33,7 @@ for position in mapDictionary:
         currentPositions.append(position)
 
 currentInstructionStep = 0
-def gcd(x, y):
-    while y:
-        x, y = y, x % y
-    return x
-
-def lcm(x, y):
-    return x * y // gcd(x, y)
-
-def find_lcm_of_array(arr):
-    if not arr:
-        return None
-    
-    result = arr[0]
-    for i in range(1, len(arr)):
-        result = lcm(result, arr[i])
-    
-    return result
-    
+  
     
 allStepsTaken = []
 for currentDestination in currentPositions:
@@ -62,4 +47,4 @@ for currentDestination in currentPositions:
     allStepsTaken.append(totalStepsTaken)
     print(f"Total steps taken: {totalStepsTaken}")
     
-print (find_lcm_of_array(allStepsTaken))
+print (math.lcm(*allStepsTaken))
